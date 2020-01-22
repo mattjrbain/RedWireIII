@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Création annonce</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.rubrique, {'label': 'Rubrique'}) }}
+    {{ form_row(form.entete, {'label': 'Titre','attr': {'placeholder': 'Titre ...'}}) }}
+    {{ form_row(form.corps, {'label': 'Contenu','attr': {'placeholder': 'Contenu ...'}}) }}
+    {{ form_row(form.images, {'label': 'Image','attr': {'placeholder': 'Télécharger illustration...'}}) }}
+
+    <button type="submit" class="btn btn-success">Publier</button>
+
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block title %}
+    Création annonce
+{% endblock %}
+
