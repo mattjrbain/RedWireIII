@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RubriqueController!{% endblock %}
+
+{% block body %}
+
+<h2>les annonces</h2>
+<section class="Annonces">
+    <div class="card-columns">
+        {% for annonce in annonces %}
+        <div class="card border-primary mb-3" style="max-width: 20rem;">
+
+            <div class="card-header">{{ annonce.rubrique.libelle }}</div>
+
+            <div class="card-body">
+
+                <div class="image">{{ annonce.image }}</div>
+                <div class="title">{{ annonce.entete }}</div>
+                <div class="text">{{ annonce.corps | raw }}</div>
+
+            {# <a href=" {{ path('rubrique', {'id' : rubrique.id}) }} " class="btn btn-primary">voir la rubrique</a> #}
+
+            {# <a href=" {{ path('rubrique_show', {'id' : rubrique.id}) }} " class="btn btn-primary">voir la rubrique</a> #}
+            {# <a href=" {{ path('rubrique_show', {'id' : rubrique.id}) }} " class="btn btn-primary">supprimer la rubrique</a> #}
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</section>
+
+{% endblock %}
