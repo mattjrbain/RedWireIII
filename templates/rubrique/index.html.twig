@@ -4,29 +4,34 @@
 
 {% block body %}
 
-<h2>les annonces</h2>
-<section class="Annonces">
-    <div class="card-columns">
-        {% for annonce in annonces %}
-        <div class="card border-primary mb-3" style="max-width: 20rem;">
+{# <h2 class="mt-4">les annonces</h2> #}
 
-            <div class="card-header">{{ annonce.rubrique.libelle }}</div>
+<h2 class="text-muted mt-4">les annonces</h2><br>
 
+<div class="row">
+{% for annonce in annonces %}
+
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
             <div class="card-body">
+                <h4 class="card-title">
+                    <div class="title">{{ annonce.rubrique.libelle }}</div>
+                </h4>
+                <h5>{{ annonce.entete }}</h5>
+                <p class="card-text">{{ annonce.corps }}</p>
+                <div class="metadata"> Ecrit le {{ annonce.createdAt | date('d/m/y') }} à {{ annonce.createdAt | date('H:i') }}</div>
+                <div>Publié par : {{annonce.user.firstName}}</div>
 
-                <div class="image">{{ annonce.image }}</div>
-                <div class="title">{{ annonce.entete }}</div>
-                <div class="text">{{ annonce.corps | raw }}</div>
-
-            {# <a href=" {{ path('rubrique', {'id' : rubrique.id}) }} " class="btn btn-primary">voir la rubrique</a> #}
-
-            {# <a href=" {{ path('rubrique_show', {'id' : rubrique.id}) }} " class="btn btn-primary">voir la rubrique</a> #}
-            {# <a href=" {{ path('rubrique_show', {'id' : rubrique.id}) }} " class="btn btn-primary">supprimer la rubrique</a> #}
-
+                <a href=" {{ path('rubrique_show', {'id' : annonce.id}) }} " class="btn btn-primary">voir l'annonce</a>
+                
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">expire le 05/05/2020</small>
+            </div>
         </div>
     </div>
-    {% endfor %}
+    
+{% endfor %}
 </div>
-</section>
-
 {% endblock %}
