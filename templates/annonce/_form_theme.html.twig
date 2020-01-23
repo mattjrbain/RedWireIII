@@ -1,0 +1,17 @@
+{% block _annonce_images_widget %}
+    <ul id="images-fields-list"
+        data-prototype="{{ form_widget(prototype)|e }}"
+        data-widget-tags="{{ '<li></li>'|e }}"
+        data-widget-counter="{{ value|length }}"
+    >
+        {% for key,imageForm in form.children %}
+            {{ form_widget(imageForm) }}
+
+        {% endfor %}
+    </ul>
+
+    <button type="button"
+            class="add-another-collection-widget"
+            data-list-selector="#images-fields-list">Ajouter une nouvelle image
+    </button>
+{% endblock %}
