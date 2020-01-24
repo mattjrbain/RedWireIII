@@ -23,12 +23,13 @@ class Annonce
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min="12")
+     * @Assert\NotBlank(message="gdfgfdsg")
      */
     private $entete;
 
     /**
      * @ORM\Column(type="text", length=255)
+     * @Assert\NotBlank()
      */
     private $corps;
 
