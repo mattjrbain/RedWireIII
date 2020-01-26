@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonce index{% endblock %}
+
+{% block body %}
+    <h1>Annonce index</h1>
+
+    <table class="table table-dark table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>Contenu</th>
+            <th>Crée le :</th>
+            <th>Expire le :</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for annonce in app.user.annonces %}
+            <tr>
+                <td>{{ annonce.id }}</td>
+                <td>{{ annonce.entete }}</td>
+                <td>{{ annonce.corps }}</td>
+                <td>{{ annonce.createdAt ? annonce.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ annonce.expiredAt ? annonce.expiredAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('annonce_show', {'id': annonce.id}) }}" class="mr-2" data-toggle="tooltip" data-placement="top" title="Voir détail annonce">
+                        <i class="material-icons">
+                            pageview
+                        </i>
+                    </a>
+                    <a href="{{ path('annonce_edit', {'id': annonce.id}) }}" data-toggle="tooltip" data-placement="top" title="Modifier annonce">
+                        <i class="material-icons">
+                            edit
+                        </i>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Vous n'avez aucune annonce actuellement publiée.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('annonce_create') }}" class="btn btn-primary">
+        <i class="material-icons">
+            post_add
+        </i>
+        Créer nouvelle annonce
+    </a>
+{% endblock %}

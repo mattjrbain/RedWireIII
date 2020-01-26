@@ -6,36 +6,30 @@ use App\Entity\Annonce;
 use App\Entity\Rubrique;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AnnonceType extends AbstractType
+class Annonce1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('entete')
             ->add('corps')
+//            ->add('createdAt')
+//            ->add('expiredAt')
             ->add('rubrique', EntityType::class, [
                 'class'        => Rubrique::class,
                 'choice_label' => 'libelle'
             ])
-            ->add(
-                'images', FileType::class, [
-                'mapped'   => true,
-                'multiple' => true,
-                'required' => false
-                //                'class' => Image::class,
-            ]);
+//            ->add('user')
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(
-            [
-                'data_class' => Annonce::class,
-            ]);
+        $resolver->setDefaults([
+            'data_class' => Annonce::class,
+        ]);
     }
 }

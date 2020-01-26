@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AnnonceRepository")
@@ -22,6 +23,7 @@ class Annonce
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="2")
      */
     private $entete;
 
@@ -53,7 +55,7 @@ class Annonce
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="annonce")
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="annonce", cascade={"persist", "remove"})
      */
     private $images;
 
