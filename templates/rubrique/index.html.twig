@@ -15,19 +15,21 @@
         <div class="card h-100">
             <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
             <div class="card-body">
-                <h4 class="card-title">
-                    <div class="title">{{ annonce.rubrique.libelle }}</div>
-                </h4>
-                <h5>{{ annonce.entete }}</h5>
-                <p class="card-text">{{ annonce.corps }}</p>
-                <div class="metadata"> Ecrit le {{ annonce.createdAt | date('d/m/y') }} à {{ annonce.createdAt | date('H:i') }}</div>
-                <div>Publié par : {{annonce.user.firstName}}</div>
+                <h5>Rubrique :</h5>
+                        <div class="title">{{ annonce.rubrique.libelle }}</div><br>
+                <h5>Titre :</h5>
+                    <div>{{ annonce.entete }}</div><br>
+                <h5>Descrption :</h5>
+                    <p class="card-text">{{ annonce.corps }}</p>
+                <div class="metadata"> Ecrit le {{ annonce.createdAt | date('d/m/y') }} à {{ annonce.createdAt | date('H:i') }}</div><br>
+                <h5>Publié par :</h5>
+                <div>{{annonce.user.firstName}}</div><br>
 
-                <a href=" {{ path('rubrique_show', {'id' : annonce.id}) }} " class="btn btn-primary">voir l'annonce</a>
+                <a href=" {{ path('annonce_show', {'id' : annonce.id}) }} " class="btn btn-primary">voir l'annonce</a>
                 
             </div>
             <div class="card-footer">
-                <small class="text-muted">expire le 05/05/2020</small>
+                <small class="text-muted">expire le {{ annonce.expiredAt | date('d/m/y') }} à {{ annonce.expiredAt | date('H:i') }}</small>
             </div>
         </div>
     </div>

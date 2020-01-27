@@ -1,22 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 
-{# <article>
-    <div class="card mt-5">
-        <h2>Rubrique : {{annonce.rubrique.libelle}}</h2><br>
-
-        <h3>Titre :{{ annonce.entete }}</h3>
-
-        <p>Descritpion : {{annonce.corps}}
-        <div class="col-3">Publié par {{annonce.id}} (<small>{{annonce.createdAt | date('d/m/Y à H:i')}}</small>)
-            </div>
-        </p>
-    </div>
-    <a href=" {{ path('rubrique_edit', {'id' : rubrique.id}) }} " class="btn btn-primary">modifier la rubrique</a> 
-
-</article> #}
-
-
     <div class="col-lg-4 col-md-6 mb-4 mt-5">
             <div class="card h-100">
                 <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
@@ -30,7 +14,7 @@
                     <div class="metadata"> Ecrit le {{ annonce.createdAt | date('d/m/y') }} à {{ annonce.createdAt | date('H:i') }}</div><br>          
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">expire le 05/05/2020</small>
+                    <small class="text-muted">expire le {{ annonce.expiredAt | date('d/m/y') }} à {{ annonce.expiredAt | date('H:i') }}</small>
                 </div>
             </div>
         </div>

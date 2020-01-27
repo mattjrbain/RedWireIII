@@ -8,9 +8,9 @@
     {% block stylesheets %}{% endblock %}
 </head>
 
-<body background="/img/bg-masthead.jpg">
+<body>
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary" style="text-color:white">
-        <a class="navbar-brand" href="/rubrique">Redwire</a>
+        <a class="navbar-brand" href="/">Redwire</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
             aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarColor03">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/rubrique">Accueil</a>
+                    <a class="nav-link" href="/">Accueil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Rubrique</a>
@@ -32,7 +32,8 @@
                 </li>
             </ul>
             <li class="form-inline my-2 my-lg-0">
-                <a href="#modal1" class="js-modal" class="btn btn-primary my-2 my-sm-0" data-target="#exampleModal">Connexion\creer un Compte</a>
+                <button type="button" class="btn btn-primary my-2 my-sm-0">Connexion</button>
+                <button type="button" class="btn btn-primary my-2 my-sm-0">creer un Compte</button>
             </li>
         </div>
     </nav>

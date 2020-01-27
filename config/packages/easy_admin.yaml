@@ -1,0 +1,8 @@
+easy_admin:
+        site_name: '<em style="font-size: 80%;">Redwire</em>'
+        entities:
+           # List the entity class name you want to manage
+            - App\Entity\Annonce
+
+
+  

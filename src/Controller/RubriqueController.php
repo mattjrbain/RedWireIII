@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Annonce;
 use App\Entity\Rubrique;
+use App\Form\AnnonceType;
 use App\Form\RubriqueType;
 use App\Repository\AnnonceRepository;
 use App\Repository\RubriqueRepository;
@@ -18,7 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class RubriqueController extends AbstractController
 {
     /**
-     * @Route("/rubrique", name="rubrique")
+     * @Route("/", name="rubrique")
      */
     public function index(AnnonceRepository $repo)
     {
@@ -34,7 +35,8 @@ class RubriqueController extends AbstractController
     }
 
     /**
-     * @Route("/rubrique/{id}", name="rubrique_show")
+     * @Route("/rubrique/{id}", name="annonce_show")
+     
      */
     public function show(Annonce $annonce, EntityManagerInterface $manager){
 
@@ -43,6 +45,4 @@ class RubriqueController extends AbstractController
         ]);
     }
 
-    
-    
 }
