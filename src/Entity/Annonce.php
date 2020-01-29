@@ -23,7 +23,7 @@ class Annonce
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="gdfgfdsg")
+     * @Assert\NotBlank()
      */
     private $entete;
 
@@ -56,7 +56,7 @@ class Annonce
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="annonce", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="annonce", orphanRemoval=true, cascade={"persist"})
      */
     private $images;
 

@@ -37,7 +37,7 @@ class Image
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="image", fileNameProperty="imageName", size="imageSize")
      *
      * @var File
      */
@@ -53,7 +53,7 @@ class Image
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $image_name;
+    private $imageName;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -117,12 +117,12 @@ class Image
 
     public function getImageName(): ?string
     {
-        return $this->image_name;
+        return $this->imageName;
     }
 
-    public function setImageName(string $image_name): self
+    public function setImageName(?string $imageName): self
     {
-        $this->image_name = $image_name;
+        $this->imageName = $imageName;
 
         return $this;
     }

@@ -75,10 +75,12 @@ class AnnonceController extends AbstractController
             $annonce->setUser($this->getUser());
 
             $images = $annonce->getImages();
+            dump($images);
             foreach ($images as $key => $image) {
                 $image->setAnnonce($annonce);
                 $images->set($key, $image);
             }
+//            dump($images);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($annonce);
@@ -141,12 +143,18 @@ class AnnonceController extends AbstractController
         $form = $this->createForm(AnnonceType::class, $annonce);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
             $images = $annonce->getImages();
+            dump($images);
             foreach ($images as $key => $image) {
                 $image->setAnnonce($annonce);
                 $images->set($key, $image);
+                if (!$image->getImageName()){
+                    $annonce->removeImage($image);
+                }
             }
+            dump($images);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($annonce);
