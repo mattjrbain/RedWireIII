@@ -7,7 +7,17 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-    {% for message in app.flashes('info') %}
+    {# {{ dump(app.flashes) }}
+    {% for label, message in app.flashes %}
+    
+    <div class="alert alert-{{label}}" role="alert">
+        <strong>{{message}}</strong>
+    </div>
+{% endfor %} #}
+
+{# A voir sur symfony.com pour mofifier la partie d'affichage des message flash #}
+
+{% for message in app.flashes('info') %}
     <div class="flash-info">
         {{ message }}
     </div>
