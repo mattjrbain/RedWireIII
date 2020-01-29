@@ -1,0 +1,21 @@
+# easy_admin:
+#     entities:
+#         Annonce :
+#                 class:
+#                         App\Entity\Annonce
+#                 list:
+#                         actions: 
+#                                 - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-secondary' }
+#                                 - { name: 'delete', icon: 'trash', label: false, css_class: 'btn btn-danger' }
+#                         fields : 
+                                
+#                                 - { property : 'entete' }
+#                                 - { property : 'corps' }
+#                                 - { property : 'createdAt' }
+#                                 - { property : 'expiredAt' }
+
+#                 form :
+#                         fields : 
+#                                 - { property : 'rubrique' }
+#                                 - { property : 'entete' }
+#                                 - { property : 'corps' }

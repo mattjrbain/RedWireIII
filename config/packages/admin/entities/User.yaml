@@ -1,0 +1,9 @@
+easy_admin:
+    entities:
+            User:
+              class : App\Entity\User   
+              list:
+                title: 'Utilisateurs'
+                actions: ['-new']
+                
+                            

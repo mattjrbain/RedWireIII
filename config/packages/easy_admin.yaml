@@ -1,32 +1,6 @@
-easy_admin:
-        site_name: '<em style="font-size: 80%;">Redwire</em>'
-        entities:
-                Annonce :
-                        class:
-                                App\Entity\Annonce
-                        list: 
-                                fields : 
-                                        - { property : 'entete' }
-                                        - { property : 'corps' }
-                                        - { property : 'createdAt' }
-                                        - { property : 'expiredAt' }
-
-                        new :
-                                fields : 
-                                        - { property : 'entete' }
-                                        - { property : 'corps' }
-
-
-                Rubrique :
-                        class:
-                                App\Entity\Rubrique
-                        list: 
-                                fields : 
-                                        - { property : 'libelle' }
-
-                        new :
-                                fields : 
-                                        - { property : 'libelle' }
+imports : 
+        - {resource: admin/}
+                        
 
 
 

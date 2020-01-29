@@ -24,15 +24,16 @@ class AnnonceFixtures extends Fixture
         }
 
         //UTILISATEUR
+        for($u = 1; $u <= 5; $u++){
+            $user = new User();
+            $user->setEmail($faker->email())
+                        ->setRoles([])
+                        ->setPassword($faker->Password())
+                        ->setFirstName($faker->Firstname())
+                        ->setLastName($faker->LastName());
 
-        $user = new User();
-        $user->setEmail($faker->email())
-                    ->setRoles([])
-                    ->setPassword($faker->Password())
-                    ->setFirstName($faker->Firstname())
-                    ->setLastName($faker->LastName());
-
-        $manager->persist($user);
+            $manager->persist($user);
+        }
 
         //ANNONCE
 

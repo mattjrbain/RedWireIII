@@ -21,7 +21,7 @@ class RubriqueController extends AbstractController
     /**
      * @Route("/", name="rubrique")
      */
-    public function index(AnnonceRepository $repo)
+    public function index(RubriqueRepository $repo)
     {
         //$repo = $this->getDoctrine()->getRepository(Rubrique::class);
 
@@ -30,7 +30,7 @@ class RubriqueController extends AbstractController
 
         return $this->render('rubrique/index.html.twig', [
             'controller_name' => 'RubriqueController',
-            'annonces' => $annonce
+            'rubriques' => $rubrique
         ]);
     }
 
@@ -38,10 +38,10 @@ class RubriqueController extends AbstractController
      * @Route("/rubrique/{id}", name="annonce_show")
      
      */
-    public function show(Annonce $annonce, EntityManagerInterface $manager){
+    public function show(Rubrique $Rubrique, EntityManagerInterface $manager){
 
         return $this->render('rubrique/show.html.twig', [
-            'annonce' => $annonce
+            'Rubriques' => $rubrique
         ]);
     }
 

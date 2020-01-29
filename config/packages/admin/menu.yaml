@@ -1,0 +1,8 @@
+easy_admin:
+  design:
+    menu:
+      - label: 'site'
+        icon: 'newspaper-o'
+        children:
+          - { entity: 'Rubrique', icon: "newspaper-o"}
+          - { entity: 'User', icon: "newspaper-o"}
