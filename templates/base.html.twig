@@ -2,10 +2,36 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    {# {{ dump(app.flashes) }}
+    {% for label, message in app.flashes %}
+    
+    <div class="alert alert-{{label}}" role="alert">
+        <strong>{{message}}</strong>
+    </div>
+{% endfor %} #}
+
+{# A voir sur symfony.com pour mofifier la partie d'affichage des message flash #}
+
+{% for message in app.flashes('info') %}
+    <div class="flash-info">
+        {{ message }}
+    </div>
+{% endfor %}
+{% for message in app.flashes('danger') %}
+    <div class="flash-info">
+        {{ message }}
+    </div>
+{% endfor %}
+{% for message in app.flashes('notice') %}
+    <div class="flash-info">
+        {{ message }}
+    </div>
+{% endfor %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
