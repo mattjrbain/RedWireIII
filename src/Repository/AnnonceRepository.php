@@ -3,8 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Annonce;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Annonce|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,9 +19,10 @@ class AnnonceRepository extends ServiceEntityRepository
         parent::__construct($registry, Annonce::class);
     }
 
-    // /**
-    //  * @return Annonce[] Returns an array of Annonce objects
-    //  */
+    /**
+     * @return Annonce[] Returns an array of Annonce objects
+     */
+
     /*
     public function findByExampleField($value)
     {
@@ -47,4 +48,13 @@ class AnnonceRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findByRubrique($id)
+    {
+        $qb = $this->createQueryBuilder('a')
+                ->where('a.rubrique = :id')
+                ->setParameter('id', $id);
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
 }
