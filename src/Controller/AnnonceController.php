@@ -75,7 +75,6 @@ class AnnonceController extends AbstractController
             $annonce->setUser($this->getUser());
 
             $images = $annonce->getImages();
-            dump($images);
             foreach ($images as $key => $image) {
                 $image->setAnnonce($annonce);
                 $images->set($key, $image);
@@ -145,12 +144,14 @@ class AnnonceController extends AbstractController
 
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //dd($request);
+            //die();
             $images = $annonce->getImages();
             dump($images);
             foreach ($images as $key => $image) {
                 $image->setAnnonce($annonce);
                 $images->set($key, $image);
-                if (!$image->getImageName()){
+                if (!$image->getImageName() && !$image->getImageFile()){
                     $annonce->removeImage($image);
                 }
             }

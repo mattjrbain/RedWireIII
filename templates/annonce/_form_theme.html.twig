@@ -5,7 +5,6 @@
         data-widget-counter="{{ value|length }}"
     >
         {% for key,imageForm in form.children %}
-{#            {{ form_widget(imageForm) }}#}
             {{ form_row(imageForm, {'label': 'Image'}) }}
         {% endfor %}
     </ul>
@@ -15,3 +14,4 @@
             data-list-selector="#images-fields-list">Ajouter une nouvelle image
     </button>
 {% endblock %}
+blk

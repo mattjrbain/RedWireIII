@@ -4,22 +4,7 @@
 
 {% block body %}
     <h1>Annonce</h1>
-{{ dump() }}
     <div class="row justify-content-center">
-        {#        {% if message %}#}
-        {#            <div class="col-md-10">#}
-        {#                <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">#}
-        {#                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
-        {#                        <span aria-hidden="true">&times;</span>#}
-        {#                    </button>#}
-        {#                    <strong>{{ message }}</strong>#}
-        {#                </div>#}
-
-        {#                <script>#}
-        {#                    $(".alert").alert();#}
-        {#                </script>#}
-        {#            </div>#}
-        {#        {% endif %}#}
         <div class="col-md-10">
 
             <div class="card mb-3 shadow">
@@ -30,10 +15,9 @@
                         {% for img in annonce.images %}
                             {#                            {{ dump(img) }}#}
                             {% if img %}
-                                <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %} ">
-                                    {#                                    <img class="d-block w-100 card-img-top" src="img/{{ img.src }}" alt=""#}
-                                    <img class="d-block w-100 card-img-top" src="/images/annonces{{asset(img.imageName)}}" alt=""
-                                         style="max-height: 300px">
+                                <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %}" style="height: 400px">
+                                    <img class="d-block card-img-top img-fluid " src="/images/annonces{{asset(img.imageName)}}" alt=""
+                                         style="height: auto; max-width: 100%">
                                 </div>
                             {% else %}
                                 <img src="" class=""
@@ -67,34 +51,16 @@
             </div>
         </div>
     </div>
-{#    <table class="table">#}
-{#        <tbody>#}
-{#            <tr>#}
-{#                <th>Id</th>#}
-{#                <td>{{ annonce.id }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <th>Entete</th>#}
-{#                <td>{{ annonce.entete }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <th>Corps</th>#}
-{#                <td>{{ annonce.corps }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <th>CreatedAt</th>#}
-{#                <td>{{ annonce.createdAt ? annonce.createdAt|date('Y-m-d H:i:s') : '' }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <th>ExpiredAt</th>#}
-{#                <td>{{ annonce.expiredAt ? annonce.expiredAt|date('Y-m-d H:i:s') : '' }}</td>#}
-{#            </tr>#}
-{#        </tbody>#}
-{#    </table>#}
+    <div class="row justify-content-center">
 
-    <a href="{{ path('annonce_index') }}">Retour à la liste</a>
+        <div class="col-md-10">
 
-    <a href="{{ path('annonce_edit', {'id': annonce.id}) }}">Modifier</a>
+            <a href="{{ path('annonce_index') }}" class="btn btn-secondary"><i class="fas fa-clipboard-list"></i> Retour à la liste</a>
 
-    {{ include('annonce/_delete_form.html.twig') }}
+            <a href="{{ path('annonce_edit', {'id': annonce.id}) }}" class="btn btn-success"><i class="fas fa-edit"></i> Modifier</a>
+
+            {{ include('annonce/_delete_form.html.twig') }}
+        </div>
+    </div>
+
 {% endblock %}

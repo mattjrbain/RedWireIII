@@ -3,39 +3,39 @@
 {% block title %}Annonce index{% endblock %}
 
 {% block body %}
-    <h1>Annonce index</h1>
+    <h1>Vos Annonces publiées</h1>
 
-    <table class="table">
+    <table class="table table-dark table-striped table-hover">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Entete</th>
-                <th>Corps</th>
-                <th>CreatedAt</th>
-                <th>ExpiredAt</th>
-                <th>actions</th>
+                <th>Titre</th>
+                <th>Publiée le...</th>
+                <th>Expire le...</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for annonce in annonces %}
+        {% for annonce in app.user.annonces %}
             <tr>
-                <td>{{ annonce.id }}</td>
                 <td>{{ annonce.entete }}</td>
-                <td>{{ annonce.corps }}</td>
                 <td>{{ annonce.createdAt ? annonce.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ annonce.expiredAt ? annonce.expiredAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('annonce_show', {'id': annonce.id}) }}">show</a>
-                    <a href="{{ path('annonce_edit', {'id': annonce.id}) }}">edit</a>
+                    <a href="{{ path('annonce_show', {'id': annonce.id}) }}" class="btn btn-primary shadow-sm"><i class="fas fa-search-plus"></i></a>
+                    <a href="{{ path('annonce_edit', {'id': annonce.id}) }}" class="btn btn-success shadow-sm"><i class="fas fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Aucune annonce publiée</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('annonce_new') }}">Create new</a>
+    <a href="{{ path('annonce_new') }}" class="btn btn-info shadow-sm">Ecrire nouvelle annonce</a>
+{% endblock %}
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 {% endblock %}
