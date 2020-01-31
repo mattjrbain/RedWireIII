@@ -15,7 +15,7 @@
                         {% for img in annonce.images %}
                             {#                            {{ dump(img) }}#}
                             {% if img %}
-                                <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %}" style="height: 400px">
+                                <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %}" style="height: 500px">
                                     <img class="d-block card-img-top img-fluid " src="/images/annonces{{asset(img.imageName)}}" alt=""
                                          style="height: auto; max-width: 100%">
                                 </div>
@@ -46,7 +46,7 @@
                     <h6>Rubrique: {{ annonce.rubrique.libelle }}</h6>
                     <p class="card-text">{{ annonce.corps }}</p>
                     <p class="card-text"><small class="text-muted">Mise en ligne le {{ annonce.createdAt|date('d/m/Y') }},
-                            visité {#{{ annonce.visites }}#} fois</small></p>
+                            visité {{ annonce.visites }} fois</small></p>
                 </div>
             </div>
         </div>

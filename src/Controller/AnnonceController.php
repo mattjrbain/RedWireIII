@@ -31,30 +31,6 @@ class AnnonceController extends AbstractController
         ]);
     }
 
-//    /**
-//     * @Route("/new", name="annonce_new", methods={"GET","POST"})
-//     * @param Request $request
-//     * @return Response
-//     */
-//    public function new(Request $request): Response
-//    {
-//        $annonce = new Annonce();
-//        $form = $this->createForm(AnnonceType::class, $annonce);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $entityManager = $this->getDoctrine()->getManager();
-//            $entityManager->persist($annonce);
-//            $entityManager->flush();
-//
-//            return $this->redirectToRoute('annonce_index');
-//        }
-//
-//        return $this->render('annonce/new.html.twig', [
-//            'annonce' => $annonce,
-//            'form' => $form->createView(),
-//        ]);
-//    }
 
     /**
      * @Route("/new", name="annonce_new", methods={"GET","POST"})
@@ -79,7 +55,6 @@ class AnnonceController extends AbstractController
                 $image->setAnnonce($annonce);
                 $images->set($key, $image);
             }
-//            dump($images);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($annonce);
@@ -102,34 +77,16 @@ class AnnonceController extends AbstractController
      */
     public function show(Annonce $annonce): Response
     {
+        $annonce->setVisites($annonce->getVisites()+1);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($annonce);
+        $entityManager->flush();
         return $this->render(
             'annonce/show.html.twig', [
             'annonce' => $annonce,
         ]);
     }
 
-//    /**
-//     * @Route("/{id}/edit", name="annonce_edit", methods={"GET","POST"})
-//     * @param Request $request
-//     * @param Annonce $annonce
-//     * @return Response
-//     */
-//    public function edit(Request $request, Annonce $annonce): Response
-//    {
-//        $form = $this->createForm(AnnonceType::class, $annonce);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $this->getDoctrine()->getManager()->flush();
-//
-//            return $this->redirectToRoute('annonce_index');
-//        }
-//
-//        return $this->render('annonce/edit.html.twig', [
-//            'annonce' => $annonce,
-//            'form' => $form->createView(),
-//        ]);
-//    }
 
     /**
      * @Route("/{id}/edit", name="annonce_edit", methods={"GET","POST"})
@@ -162,9 +119,7 @@ class AnnonceController extends AbstractController
             $entityManager->flush();
 
             return $this->redirectToRoute(
-                'annonce_index', [
-                'id' => $annonce->getId(),
-            ]);
+                'annonce_index');
         }
 
         return $this->render(

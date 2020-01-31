@@ -5,6 +5,6 @@
 {{ form_row(form.corps) }}
 {{ form_row(form.rubrique) }}
 {{ form_row(form.images) }}
-<button class="btn btn-info btn-sm">{{ button_label|default('Publier') }}</button>
+<button class="btn btn-info"><i class="fas fa-check-circle"></i> {{ button_label|default('Publier') }}</button>
 {{ form_end(form) }}
 {# https://bootsnipp.com/snippets/eNbOa A voir pour preview des images #}

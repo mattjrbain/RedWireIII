@@ -18,8 +18,8 @@
         {% for annonce in app.user.annonces %}
             <tr>
                 <td>{{ annonce.entete }}</td>
-                <td>{{ annonce.createdAt ? annonce.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ annonce.expiredAt ? annonce.expiredAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ annonce.createdAt ? annonce.createdAt|date('d/m/Y à H:i:s') : '' }}</td>
+                <td>{{ annonce.expiredAt ? annonce.expiredAt|date('d/m/Y à H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('annonce_show', {'id': annonce.id}) }}" class="btn btn-primary shadow-sm"><i class="fas fa-search-plus"></i></a>
                     <a href="{{ path('annonce_edit', {'id': annonce.id}) }}" class="btn btn-success shadow-sm"><i class="fas fa-edit"></i></a>

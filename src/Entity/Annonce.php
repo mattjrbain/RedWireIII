@@ -60,6 +60,11 @@ class Annonce
      */
     private $images;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $visites;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -169,6 +174,18 @@ class Annonce
                 $image->setAnnonce(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getVisites(): ?int
+    {
+        return $this->visites;
+    }
+
+    public function setVisites(?int $visites): self
+    {
+        $this->visites = $visites;
 
         return $this;
     }

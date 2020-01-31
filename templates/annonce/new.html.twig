@@ -5,39 +5,24 @@
 {% block body %}
     <div class="row justify-content-center">
         <div class="col-10">
-            <h1>Création nouvelle annonce</h1>
+            <div class="card bg-light shadow">
+                <div class="card-header">
 
-            {{ include('annonce/_form.html.twig') }}
+                    <h1>Création nouvelle annonce</h1>
+                </div>
+                <div class="card-body">
+                {{ include('annonce/_form.html.twig') }}
+                </div>
 
-            <a href="{{ path('annonce_index') }}">Retour à la liste</a>
+            </div>
+
+            <a href="{{ path('annonce_index') }}" class="btn btn-secondary mt-2 shadow"><i class="fas fa-clipboard-list"></i>
+                Retour à la liste</a>
         </div>
     </div>
     <div class="gallery row"></div>
 {% endblock %}
 {% block javascripts %}
-    <script >
-
-        $('.add-another-collection-widget').click(function (e) {
-            let list = $($(this).attr('data-list-selector'));
-            // Try to find the counter of the list or use the length of the list
-            let counter = list.data('widget-counter') | list.children().length;
-
-            // grab the prototype template
-            let newWidget = list.attr('data-prototype');
-            // replace the "__name__" used in the id and name of the prototype
-            // with a number that's unique to your emails
-            // end name attribute looks like name="contact[emails][2]"
-            newWidget = newWidget.replace(/__name__/g, counter);
-            // Increase the counter
-            counter++;
-            // And store it, the length cannot be used if deleting widgets is allowed
-            list.data('widget-counter', counter);
-
-            // create a new list element and add it to the list
-            let newElem = $(list.attr('data-widget-tags')).html(newWidget);
-            newElem.appendTo(list);
-        });
-    </script>
     <script src="{{ asset('js/image_preview.js') }}"></script>
 {% endblock %}
 
