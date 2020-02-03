@@ -1,8 +1,12 @@
 easy_admin:
   design:
     menu:
-      - label: 'site'
+      # - { entity: 'User', role: ROLE_ADMIN }
+      - label: 'Gestion'
         icon: 'newspaper-o'
         children:
           - { entity: 'Rubrique', icon: "newspaper-o"}
           - { entity: 'User', icon: "newspaper-o"}
+          - { entity: 'Annonce', icon: "newspaper-o"}
+
+        # name_property_path: 'First name'

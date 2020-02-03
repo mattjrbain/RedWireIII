@@ -30,14 +30,37 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Mon Compte</a>
                 </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin">Administration</a>
+                </li>
+                {% endif %}
             </ul>
             <li class="form-inline my-2 my-lg-0">
-                <button type="button" class="btn btn-primary my-2 my-sm-0">Connexion</button>
+                <button type="button" class="btn btn-primary my-2 my-sm-0">Connexion
+                <a href="rubrique/login"></a>
+                </button>
                 <button type="button" class="btn btn-primary my-2 my-sm-0">creer un Compte</button>
             </li>
         </div>
     </nav>
     <div class="container">
+
+    {% for message in app.flashes('info') %}
+    <div class="flash-info">
+        {{ message }}
+    </div>
+{% endfor %}
+{% for message in app.flashes('danger') %}
+    <div class="flash-info">
+        {{ message }}
+    </div>
+{% endfor %}
+{% for message in app.flashes('notice') %}
+    <div class="flash-info">
+        {{ message }}
+    </div>
+{% endfor %}
         {% block body %}{% endblock %}
     </div>
     {% block javascripts %}{% endblock %}

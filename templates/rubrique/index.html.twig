@@ -4,32 +4,17 @@
 
 {% block body %}
 
-{# <h2 class="mt-4">les annonces</h2> #}
-
-<h2 class="text-muted mt-4">les annonces</h2><br>
+<h2 class="text-muted mt-4">les rubriques</h2><br>
 
 <div class="row">
-{% for annonce in annonces %}
+{% for rubrique in rubriques %}
 
     <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
             <div class="card-body">
                 <h5>Rubrique :</h5>
-                        <div class="title">{{ annonce.rubrique.libelle }}</div><br>
-                <h5>Titre :</h5>
-                    <div>{{ annonce.entete }}</div><br>
-                <h5>Descrption :</h5>
-                    <p class="card-text">{{ annonce.corps }}</p>
-                <div class="metadata"> Ecrit le {{ annonce.createdAt | date('d/m/y') }} à {{ annonce.createdAt | date('H:i') }}</div><br>
-                <h5>Publié par :</h5>
-                <div>{{annonce.user.firstName}}</div><br>
-
-                <a href=" {{ path('annonce_show', {'id' : annonce.id}) }} " class="btn btn-primary">voir l'annonce</a>
-                
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">expire le {{ annonce.expiredAt | date('d/m/y') }} à {{ annonce.expiredAt | date('H:i') }}</small>
+                        <div class="title">{{rubrique.libelle }}</div><br>
+                <a href=" {{ path('annonce_show', {'id' : rubrique.id }) }} " class="btn btn-primary">voir la rubrique</a>
             </div>
         </div>
     </div>

@@ -2,10 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Entity\Annonce;
 use App\Entity\Rubrique;
-use App\Form\AnnonceType;
 use App\Form\RubriqueType;
 use App\Repository\AnnonceRepository;
 use App\Repository\RubriqueRepository;
@@ -26,7 +24,7 @@ class RubriqueController extends AbstractController
         //$repo = $this->getDoctrine()->getRepository(Rubrique::class);
 
 
-        $annonce = $repo->findAll();
+        $rubrique = $repo->findAll();
 
         return $this->render('rubrique/index.html.twig', [
             'controller_name' => 'RubriqueController',
@@ -38,10 +36,11 @@ class RubriqueController extends AbstractController
      * @Route("/rubrique/{id}", name="annonce_show")
      
      */
-    public function show(Rubrique $Rubrique, EntityManagerInterface $manager){
+    public function show(Rubrique $rubrique){
 
         return $this->render('rubrique/show.html.twig', [
-            'Rubriques' => $rubrique
+            'rubrique' => $rubrique
+
         ]);
     }
 

@@ -1,24 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 
-    <div class="col-lg-4 col-md-6 mb-4 mt-5">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h5>Rubrique :</h5>
-                        <div class="title">{{ annonce.rubrique.libelle }}</div><br>
-                        <h5>Titre :</h5>
-                    <div>{{ annonce.entete }}</div><br>
-                    <h5>Descrption :</h5>
-                    <p class="card-text">{{ annonce.corps }}</p>
-                    <div class="metadata"> Ecrit le {{ annonce.createdAt | date('d/m/y') }} à {{ annonce.createdAt | date('H:i') }}</div><br>          
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">expire le {{ annonce.expiredAt | date('d/m/y') }} à {{ annonce.expiredAt | date('H:i') }}</small>
-                </div>
-            </div>
-        </div>
-
+    <article>
+        <h2>{{ rubrique.libelle }}</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero alias minima expedita,
+                dignissimos eum suscipit natus delectus,
+                eveniet eos saepe dolorum, porro sapiente rem recusandae minus quaerat? Reprehenderit, aperiam laudantium!
+            </p>
+        <div class="metadata">ecrit le 10/06/2019 à 19h00 dans la categorie politique</div>
+        
+    </article>
 
 {% endblock %}
 
