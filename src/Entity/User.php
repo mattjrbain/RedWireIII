@@ -100,11 +100,11 @@ class User implements UserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        // $roles = $this->roles;
+        // // guarantee every user at least has ROLE_USER
+        // $roles[] = 'ROLE_USER';
 
-        return array_unique($roles);
+        return array_unique(array_merge($this->roles));
     }
 
     public function setRoles(array $roles): self
@@ -199,6 +199,11 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->firstName;
     }
 
     public function getToken(): ?string
