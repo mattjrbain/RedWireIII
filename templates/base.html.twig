@@ -5,46 +5,56 @@
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
     <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/8108dfc9fe.js" crossorigin="anonymous"></script>
     {% block stylesheets %}{% endblock %}
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-secondary" style="text-color:white">
-        <a class="navbar-brand" href="/">Redwire</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary" style="text-color:white">
+    <a class="navbar-brand" href="/">Redwire</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
             aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarColor03">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Rubrique</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Creer une annonce</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Mon Compte</a>
-                </li>
-                {% if is_granted('ROLE_ADMIN') %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin">Administration</a>
-                </li>
-                {% endif %}
-            </ul>
-            <li class="form-inline my-2 my-lg-0">
-                <button type="button" class="btn btn-primary my-2 my-sm-0">Connexion
-                <a href="rubrique/login"></a>
-                </button>
-                <button type="button" class="btn btn-primary my-2 my-sm-0">creer un Compte</button>
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor03">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('rubrique') }}">Accueil</a>
             </li>
-        </div>
-    </nav>
-    <div class="container">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('rubrique') }}">Rubrique</a>
+            </li>
+            {% if app.user %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('annonce_new') }}">Créer une annonce</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('annonce_index') }}">Mes Annonces</a>
+                </li>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('easyadmin') }}">Administration</a>
+                </li>
+            {% endif %}
+        </ul>
+
+        <li class="form-inline my-2 my-lg-0">
+            {% if app.user %}
+                <a type="button" class="btn btn-primary my-2 my-sm-0" href="{{ path('app_logout') }}">Déconnexion
+
+                </a>
+            {% else %}
+                <a type="button" class="btn btn-primary my-2 my-sm-0" href="{{ path('app_login') }}">Connexion
+
+                </a>
+            {% endif %}
+            <a href="{{ path('app_register') }}" type="button" class="btn btn-primary my-2 my-sm-0">Créer un Compte</a>
+        </li>
+
+    </div>
+</nav>
+<div class="container">
 
     {% for message in app.flashes('info') %}
         <div class="flash-info">
@@ -80,24 +90,24 @@
 {% endblock %}
 </body>
 
-    {% for message in app.flashes('info') %}
-    <div class="flash-info">
-        {{ message }}
-    </div>
-{% endfor %}
-{% for message in app.flashes('danger') %}
-    <div class="flash-info">
-        {{ message }}
-    </div>
-{% endfor %}
-{% for message in app.flashes('notice') %}
-    <div class="flash-info">
-        {{ message }}
-    </div>
-{% endfor %}
-        {% block body %}{% endblock %}
-    </div>
-    {% block javascripts %}{% endblock %}
-</body>
+{#    {% for message in app.flashes('info') %}#}
+{#    <div class="flash-info">#}
+{#        {{ message }}#}
+{#    </div>#}
+{#{% endfor %}#}
+{#{% for message in app.flashes('danger') %}#}
+{#    <div class="flash-info">#}
+{#        {{ message }}#}
+{#    </div>#}
+{#{% endfor %}#}
+{#{% for message in app.flashes('notice') %}#}
+{#    <div class="flash-info">#}
+{#        {{ message }}#}
+{#    </div>#}
+{#{% endfor %}#}
+{#        {% block body %}{% endblock %}#}
+{#    </div>#}
+{#    {% block javascripts %}{% endblock %}#}
+{#</body>#}
 
-</html>
+{#</html>#}

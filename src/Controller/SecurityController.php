@@ -50,8 +50,14 @@ class SecurityController extends AbstractController
     {
 //        throw new \Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
     }
+
     /**
      * @Route("/mdp", name="app_forgotten_password", methods="GET|POST")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
+     * @param \Swift_Mailer $mailer
+     * @param TokenGeneratorInterface $tokenGenerator
+     * @return Response
      */
     public function forgottenPassword(Request $request, UserPasswordEncoderInterface $encoder, \Swift_Mailer $mailer, TokenGeneratorInterface $tokenGenerator): Response
     {
@@ -73,7 +79,7 @@ class SecurityController extends AbstractController
                 $entityManager->flush();
             } catch (\Exception $e) {
                 $this->addFlash('warning', $e->getMessage());
-                return $this->redirectToRoute('home');
+                return $this->redirectToRoute('rubrique');
             }
  
             $url = $this->generateUrl('app_reset_password', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);

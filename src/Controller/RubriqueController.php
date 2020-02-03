@@ -32,16 +32,16 @@ class RubriqueController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/rubrique/{id}", name="annonce_show")
-     
-     */
-    public function show(Rubrique $rubrique){
-
-        return $this->render('rubrique/show.html.twig', [
-            'rubrique' => $rubrique
-
-        ]);
-    }
+//    /**
+//     * @Route("/rubrique/{id}", name="annonce_show")
+//
+//     */
+//    public function show(Rubrique $rubrique){
+//
+//        return $this->render('rubrique/show.html.twig', [
+//            'rubrique' => $rubrique
+//
+//        ]);
+//    }
 
 }
