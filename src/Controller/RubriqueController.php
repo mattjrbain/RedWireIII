@@ -9,6 +9,7 @@ use App\Repository\AnnonceRepository;
 use App\Repository\RubriqueRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,6 +19,8 @@ class RubriqueController extends AbstractController
 {
     /**
      * @Route("/", name="rubrique")
+     * @param RubriqueRepository $repo
+     * @return Response
      */
     public function index(RubriqueRepository $repo)
     {
@@ -32,16 +35,31 @@ class RubriqueController extends AbstractController
         ]);
     }
 
-//    /**
-//     * @Route("/rubrique/{id}", name="annonce_show")
-//
-//     */
-//    public function show(Rubrique $rubrique){
-//
-//        return $this->render('rubrique/show.html.twig', [
-//            'rubrique' => $rubrique
-//
-//        ]);
-//    }
+    /**
+     * @Route("/rubrique/{id}", name="annonce_show_unsigned")
+     * @param Rubrique $rubrique
+     * @return Response
+     */
+    public function show(Rubrique $rubrique){
+
+        return $this->render('rubrique/show.html.twig', [
+            'rubrique' => $rubrique
+
+        ]);
+    }
+
+    /**
+     * @Route("/solo/{id}", name="annonce_solo")
+     * @param Annonce $annonce
+     * @return Response
+     */
+    public function solo(Annonce $annonce){
+
+        return $this->render('rubrique/solo.html.twig', [
+            'id' => $annonce->getId(),
+            'annonce' => $annonce
+
+        ]);
+    }
 
 }

@@ -1,15 +1,42 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 
-    <article>
-        <h2>{{ rubrique.libelle }}</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero alias minima expedita,
-                dignissimos eum suscipit natus delectus,
-                eveniet eos saepe dolorum, porro sapiente rem recusandae minus quaerat? Reprehenderit, aperiam laudantium!
-            </p>
-        <div class="metadata">ecrit le 10/06/2019 à 19h00 dans la categorie politique</div>
-        
-    </article>
+    <div class="row">
+
+        {% for annonce in rubrique.annonces %}
+            <div class="col-md-4 py-2">
+                <div class="card shadow h-100 text-center bg-lightblue" {#style="width: 18rem;"#}>
+                                                {% if annonce.images|first %}
+                                                    <img src="/images/annonces/{{ annonce.images|first}}" class="card-img-top" alt="..."
+                                                         style="max-height: 200px">
+                                                {% else %}
+                                                    <img src="https://placehold.it/400x200" class="card-img-top" alt="..."
+                                                         style="max-height: 200px">
+                                                {% endif %}
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ annonce.entete }}</h5>
+                        <p class="card-text"><small class="text-muted">Mise en ligne
+                                le {{ annonce.createdAt|date('d/m/Y') }}</small></p>
+                        <a id="" class="btn btn-primary mt-auto stretched-link shadow-sm{#align-self-end #}"
+                           href="{{ path('annonce_solo', {'id': annonce.id})  }}"
+                           role="button">Consulter</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+{#        <article>#}
+{#            <h2>{{ rubrique.libelle }}</h2>#}
+{#            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero alias minima expedita,#}
+{#                dignissimos eum suscipit natus delectus,#}
+{#                eveniet eos saepe dolorum, porro sapiente rem recusandae minus quaerat? Reprehenderit, aperiam#}
+{#                laudantium!#}
+{#            </p>#}
+{#            <div class="metadata">ecrit le 10/06/2019 à 19h00 dans la categorie politique</div>#}
+
+{#        </article>#}
+    </div>
+
 
 {% endblock %}
 

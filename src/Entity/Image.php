@@ -141,6 +141,6 @@ class Image
 
     public function __toString()
     {
-        return $this->src;
+        return $this->imageName;
     }
 }
