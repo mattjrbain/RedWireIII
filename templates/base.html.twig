@@ -39,18 +39,17 @@
             {% endif %}
         </ul>
 
-        <li class="form-inline my-2 my-lg-0">
-            {% if app.user %}
-                <a type="button" class="btn btn-primary my-2 my-sm-0" href="{{ path('app_logout') }}">Déconnexion
-
-                </a>
-            {% else %}
-                <a type="button" class="btn btn-primary my-2 my-sm-0" href="{{ path('app_login') }}">Connexion
-
-                </a>
-            {% endif %}
-            <a href="{{ path('app_register') }}" type="button" class="btn btn-primary my-2 my-sm-0">Créer un Compte</a>
-        </li>
+        {% if app.user %}
+            <span class="badge badge-info">Vous êtes connecté, <strong>{{ app.user.firstName }}</strong></span>
+            <a type="button" class="btn btn-primary ml-2" href="{{ path('app_logout') }}">
+                Déconnexion
+            </a>
+        {% else %}
+            <a type="button" class="btn btn-primary ml-2" href="{{ path('app_login') }}">
+                Connexion
+            </a>
+        {% endif %}
+        <a href="{{ path('app_register') }}" type="button" class="btn btn-primary ml-2">Créer un Compte</a>
 
     </div>
 </nav>
