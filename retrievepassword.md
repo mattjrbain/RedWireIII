@@ -1,63 +1,29 @@
-<?php
+Voilà ce que Smaïl, Bill et moi nous rappelons avoir fait pour la récup de mot de passe par mail.
 
-namespace App\Controller;
+Installer Swifmailer
 
-use App\Entity\User;
-use App\Security\RedWireAuthenticator;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
+Modifier .env pour l'envoi de mail via gmail, utiliser votre propre compte pour les tests.
 
-class SecurityController extends AbstractController
-{
+``` php ###> symfony/swiftmailer-bundle ###
+# For Gmail as a transport, use: "gmail://username:password@localhost"
+# For a generic SMTP server, use: "smtp://localhost:25?encryption=&auth_mode="
+# Delivery is disabled by default via "null://localhost"
+MAILER_URL=gmail://username:password@localhost
+###< symfony/swiftmailer-bundle ###
+```
+Ajout du token dans User Entity
+
+``` php     
     /**
-     * @Route("/login", name="app_login")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
-    {
-        // dump($this->getUser()->);
-        //if($this->getUser()){
-            // if ($this->getUser()->getRoles()[0] == 'ROLE_ADMIN') {
-            //     dump($this->getUser());
-           // return $this->redirectToRoute('easyadmin');
-        //}
-        
+    private $token;
+```
+Dans notre SecurityController ajout de :
 
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
-
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
-    }
-    // /**
-    //  * @Route("/admin", name="admin")
-    //  */
-    // public function admin(){
-    //     return $this->render('/../vendor/easycorp/easyadmin-bundle/src/Resources/views/default/layout.html.twig');
-    // }
-
-    /**
-     * @Route("/logout", name="app_logout")
-     */
-    public function logout()
-    {
-//        throw new \Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
-    }
-
+``` php
     /**
      * @Route("/mdp", name="app_forgotten_password", methods="GET|POST")
-     * @param Request $request
-     * @param UserPasswordEncoderInterface $encoder
-     * @param \Swift_Mailer $mailer
-     * @param TokenGeneratorInterface $tokenGenerator
-     * @return Response
      */
     public function forgottenPassword(Request $request, UserPasswordEncoderInterface $encoder, \Swift_Mailer $mailer, TokenGeneratorInterface $tokenGenerator): Response
     {
@@ -79,7 +45,7 @@ class SecurityController extends AbstractController
                 $entityManager->flush();
             } catch (\Exception $e) {
                 $this->addFlash('warning', $e->getMessage());
-                return $this->redirectToRoute('rubrique');
+                return $this->redirectToRoute('home');
             }
  
             $url = $this->generateUrl('app_reset_password', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
@@ -146,3 +112,81 @@ class SecurityController extends AbstractController
  
     }
 }
+```
+Création des templates :
+
+forgottenPassword.html.twig :
+
+``` twig 
+    {% extends 'base.html.twig' %}
+ 
+{% block title %}Réinit de mot de passe{% endblock %}
+ 
+{% block body %}
+<div class="container bubble">
+    <form method="post">
+ 
+        <h2 class="bubble-title">Réinit du mot de passe</h2>
+        <label for="inputemail" class="">Entrer votre email</label>
+        <input type="email" name="email" id="inputPassword" class="form-control" placeholder="Email" required>
+<div class="text-center mt-2">
+        <button class="btn btn-lg btn-success mt-2 ml-0" type="submit">
+            Envoyer !
+        </button>
+        </div>
+    </form>
+    </div>
+ 
+{% endblock %}
+```
+resetPasswordMail.html.twig :
+
+```html
+    <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <title>Réinisialisation Mot de passe</title>
+        </head>
+        <body>
+            <div>
+                <h2 style="color:#253f58; font-size: 25px;">Redwire Réinisialisation du mot de passe</h2>
+                <p style="font-size: 15px;">
+                    <strong style="color: #d92139; font-size: 15px;">
+                        {{user.userName}}</strong>
+                    tu as oublié ton mot de passe, tu vas pouvoir le réinisialiser en suivant ce lien :</p>
+                <p style="font-size: 15px;">
+                    <a href="{{ url }}">Réinisialisation du mot de passe</a>
+                </p>
+                <p style="font-size: 15px;">Redwire Team.
+                    <br/>
+                    Enjoy !
+                </p>
+            </div>
+        </body>
+    </html>
+```
+resetPassword.html.twig :
+``` twig 
+    {% extends 'base.html.twig' %}
+ 
+{% block title %}Réinisialisation du mot de passe{% endblock %}
+ 
+{% block body %}
+<div class="container bubble">
+    <form method="post">
+ 
+        <h2 class="bubble-title">Réinisialisation du mot de passe</h2>
+        <label for="inputPassword" class="">Nouveau mot de passe*</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+        <input type="hidden" name="token" value="{token}">
+<div class="text-center mt-2">
+        <button class="btn btn-lg btn-success mt-2 ml-0" type="submit">
+            Envoyer !
+        </button>
+        </div>
+    </form>
+    </div>
+ 
+{% endblock %}
+```

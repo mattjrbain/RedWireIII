@@ -1,0 +1,17 @@
+easy_admin:
+    entities:
+        Rubrique :
+                class:
+                        App\Entity\Rubrique
+                # templates:
+                #   edit: 'admin/Rubrique/edit.html.twig'
+                list: 
+                        actions: 
+                                  - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-secondary' }
+                                  - { name: 'delete', icon: 'trash', label: false, css_class: 'btn btn-danger' }
+                        fields : 
+                                - { property : 'libelle' }
+
+                form :
+                        fields : 
+                                - { property : 'libelle' }

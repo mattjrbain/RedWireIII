@@ -6,6 +6,8 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AnnonceRepository")
@@ -21,11 +23,13 @@ class Annonce
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $entete;
 
     /**
      * @ORM\Column(type="text", length=255)
+     * @Assert\NotBlank()
      */
     private $corps;
 
@@ -52,9 +56,14 @@ class Annonce
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="annonce")
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="annonce", orphanRemoval=true, cascade={"persist"})
      */
     private $images;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $visites;
 
     public function __construct()
     {
@@ -131,7 +140,7 @@ class Annonce
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(?UserInterface $user): self
     {
         $this->user = $user;
 
@@ -167,5 +176,22 @@ class Annonce
         }
 
         return $this;
+    }
+
+    public function getVisites(): ?int
+    {
+        return $this->visites;
+    }
+
+    public function setVisites(?int $visites): self
+    {
+        $this->visites = $visites;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->entete;
     }
 }
