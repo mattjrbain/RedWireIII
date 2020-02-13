@@ -23,11 +23,6 @@ class Image
      */
     private $id;
 
-//    /**
-//     * @ORM\Column(type="string", length=255)
-//     */
-//    private $src;
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Annonce", inversedBy="images", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
@@ -60,28 +55,27 @@ class Image
      */
     private $image_size;
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-//    public function getSrc(): ?string
-//    {
-//        return $this->src;
-//    }
-//
-//    public function setSrc(string $src): self
-//    {
-//        $this->src = $src;
-//
-//        return $this;
-//    }
 
+    /**
+     * @return Annonce|null
+     */
     public function getAnnonce(): ?Annonce
     {
         return $this->annonce;
     }
 
+    /**
+     * @param Annonce|null $annonce
+     * @return $this
+     */
     public function setAnnonce(?Annonce $annonce): self
     {
         $this->annonce = $annonce;
@@ -110,16 +104,26 @@ class Image
         }
     }
 
+    /**
+     * @return File|null
+     */
     public function getImageFile(): ?File
     {
         return $this->imageFile;
     }
 
+    /**
+     * @return string|null
+     */
     public function getImageName(): ?string
     {
         return $this->imageName;
     }
 
+    /**
+     * @param string|null $imageName
+     * @return $this
+     */
     public function setImageName(?string $imageName): self
     {
         $this->imageName = $imageName;
@@ -127,11 +131,18 @@ class Image
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getImageSize(): ?string
     {
         return $this->image_size;
     }
 
+    /**
+     * @param string|null $image_size
+     * @return $this
+     */
     public function setImageSize(?string $image_size): self
     {
         $this->image_size = $image_size;
@@ -139,6 +150,9 @@ class Image
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function __toString()
     {
         return $this->imageName;

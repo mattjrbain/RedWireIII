@@ -65,21 +65,34 @@ class Annonce
      */
     private $visites;
 
+    /**
+     * Annonce constructor.
+     */
     public function __construct()
     {
         $this->images = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getEntete(): ?string
     {
         return $this->entete;
     }
 
+    /**
+     * @param string $entete
+     * @return $this
+     */
     public function setEntete(string $entete): self
     {
         $this->entete = $entete;
@@ -87,11 +100,18 @@ class Annonce
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getCorps(): ?string
     {
         return $this->corps;
     }
 
+    /**
+     * @param string $corps
+     * @return $this
+     */
     public function setCorps(string $corps): self
     {
         $this->corps = $corps;
@@ -99,11 +119,18 @@ class Annonce
         return $this;
     }
 
+    /**
+     * @return DateTimeInterface|null
+     */
     public function getCreatedAt(): ?DateTimeInterface
     {
         return $this->createdAt;
     }
 
+    /**
+     * @param DateTimeInterface $createdAt
+     * @return $this
+     */
     public function setCreatedAt(DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
@@ -111,11 +138,18 @@ class Annonce
         return $this;
     }
 
+    /**
+     * @return DateTimeInterface|null
+     */
     public function getExpiredAt(): ?DateTimeInterface
     {
         return $this->expiredAt;
     }
 
+    /**
+     * @param DateTimeInterface $expiredAt
+     * @return $this
+     */
     public function setExpiredAt(DateTimeInterface $expiredAt): self
     {
         $this->expiredAt = $expiredAt;
@@ -123,11 +157,18 @@ class Annonce
         return $this;
     }
 
+    /**
+     * @return Rubrique|null
+     */
     public function getRubrique(): ?Rubrique
     {
         return $this->rubrique;
     }
 
+    /**
+     * @param Rubrique|null $rubrique
+     * @return $this
+     */
     public function setRubrique(?Rubrique $rubrique): self
     {
         $this->rubrique = $rubrique;
@@ -135,11 +176,18 @@ class Annonce
         return $this;
     }
 
+    /**
+     * @return User|null
+     */
     public function getUser(): ?User
     {
         return $this->user;
     }
 
+    /**
+     * @param UserInterface|null $user
+     * @return $this
+     */
     public function setUser(?UserInterface $user): self
     {
         $this->user = $user;
@@ -155,6 +203,10 @@ class Annonce
         return $this->images;
     }
 
+    /**
+     * @param Image $image
+     * @return $this
+     */
     public function addImage(Image $image): self
     {
         if (!$this->images->contains($image)) {
@@ -165,6 +217,10 @@ class Annonce
         return $this;
     }
 
+    /**
+     * @param Image $image
+     * @return $this
+     */
     public function removeImage(Image $image): self
     {
         if ($this->images->contains($image)) {
@@ -178,11 +234,18 @@ class Annonce
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getVisites(): ?int
     {
         return $this->visites;
     }
 
+    /**
+     * @param int|null $visites
+     * @return $this
+     */
     public function setVisites(?int $visites): self
     {
         $this->visites = $visites;
@@ -190,6 +253,9 @@ class Annonce
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function __toString()
     {
         return $this->entete;

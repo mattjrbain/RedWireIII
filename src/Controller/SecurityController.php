@@ -21,14 +21,6 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // dump($this->getUser()->);
-        //if($this->getUser()){
-            // if ($this->getUser()->getRoles()[0] == 'ROLE_ADMIN') {
-            //     dump($this->getUser());
-           // return $this->redirectToRoute('easyadmin');
-        //}
-        
-
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
@@ -36,12 +28,6 @@ class SecurityController extends AbstractController
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
-    // /**
-    //  * @Route("/admin", name="admin")
-    //  */
-    // public function admin(){
-    //     return $this->render('/../vendor/easycorp/easyadmin-bundle/src/Resources/views/default/layout.html.twig');
-    // }
 
     /**
      * @Route("/logout", name="app_logout")
@@ -129,8 +115,6 @@ class SecurityController extends AbstractController
             $entityManager->flush();
  
             $this->addFlash('notice', 'Mot de passe mis à jour !');
- 
-            // return $this->redirectToRoute('app_login');
 
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,

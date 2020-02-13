@@ -32,16 +32,6 @@ class RegistrationFormType extends AbstractType
                 // 'label' => 'Nom'
             ])
 
-            // ->add('agreeTerms', CheckboxType::class, [
-            //     'mapped' => false,
-            //     'label' => 'Merci d\'accepter les conditions',
-            //     'constraints' => [
-            //         new IsTrue([
-            //             'message' => 'Vous devez accepter les conditions',
-            //         ]),
-            //     ],
-            // ])
-
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Merci d\'indiquer des mots de passes identiques.',
@@ -51,23 +41,6 @@ class RegistrationFormType extends AbstractType
                 'second_options'=> [],
 
             ]);
-            // ->add('plainPassword', PasswordType::class, [
-            //     // instead of being set onto the object directly,
-            //     // this is read and encoded in the controller
-            //     'mapped' => false,
-            //     'label' => 'Mot de passe',
-            //     'constraints' => [
-            //         new NotBlank([
-            //             'message' => 'Tapez un mot de passe svp',
-            //         ]),
-                    // new Length([
-                    //     'min' => 6,
-                    //     'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
-                    //     // max length allowed by Symfony for security reasons
-                    //     'max' => 4096,
-                    // ]),
-            //     ],
-            // ])
 
     }
 

@@ -15,13 +15,6 @@
                             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                         {% endif %}
 
-                        {#                        {% if app.user %}#}
-                        {#                            <div class="mb-3">#}
-                        {#                                Bonjour#}
-                        {#                                {{ app.user.username }}, vous êtes bien identifié.#}
-                        {#                                <a href="{{ path('app_logout') }}">Déconnexion</a>#}
-                        {#                            </div>#}
-                        {#                        {% endif %}#}
 
                         {% for label, messages in app.flashes %}
                             {% for message in messages %}

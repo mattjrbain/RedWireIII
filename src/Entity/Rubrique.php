@@ -28,21 +28,34 @@ class Rubrique
      */
     private $annonces;
 
+    /**
+     * Rubrique constructor.
+     */
     public function __construct()
     {
         $this->annonces = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getLibelle(): ?string
     {
         return $this->libelle;
     }
 
+    /**
+     * @param string $libelle
+     * @return $this
+     */
     public function setLibelle(string $libelle): self
     {
         $this->libelle = $libelle;
@@ -58,6 +71,10 @@ class Rubrique
         return $this->annonces;
     }
 
+    /**
+     * @param Annonce $annonce
+     * @return $this
+     */
     public function addAnnonce(Annonce $annonce): self
     {
         if (!$this->annonces->contains($annonce)) {
@@ -68,6 +85,10 @@ class Rubrique
         return $this;
     }
 
+    /**
+     * @param Annonce $annonce
+     * @return $this
+     */
     public function removeAnnonce(Annonce $annonce): self
     {
         if ($this->annonces->contains($annonce)) {
@@ -81,6 +102,9 @@ class Rubrique
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function __toString()
     {
         return $this->libelle;

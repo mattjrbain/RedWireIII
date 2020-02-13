@@ -24,6 +24,9 @@ class LoginListener
         $this->session = $session;
     }
 
+    /**
+     * @param InteractiveLoginEvent $event
+     */
     public function onSecurityInteractiveLogin(InteractiveLoginEvent $event)
     {
         $userName = $event->getAuthenticationToken()->getUser()->getLastName();

@@ -13,10 +13,11 @@
                          data-ride="carousel" style="overflow: hidden">
 
                         {% for img in annonce.images %}
-                            {#                            {{ dump(img) }}#}
                             {% if img %}
-                                <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %}" style="height: 500px">
-                                    <img class="d-block card-img-top img-fluid " src="/images/annonces{{asset(img.imageName)}}" alt=""
+                                <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %}"
+                                     style="height: 500px">
+                                    <img class="d-block card-img-top img-fluid "
+                                         src="/images/annonces{{ asset(img.imageName) }}" alt=""
                                          style="height: auto; max-width: 100%">
                                 </div>
                             {% else %}
@@ -35,17 +36,16 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-                    {#                        <img src="{{ annonce.imgSrc }}" class="card-img img-fluid" alt="..." style="max-height: 500px">#}
                 {% else %}
                     <img src="" class="card-img img-fluid"
                          alt="Pas d'image" style="max-height: 500px">
                 {% endif %}
-                {#                {{ dump(annonce) }}#}
                 <div class="card-body">
                     <h5 class="card-title text-capitalize">{{ annonce.entete }}</h5>
                     <h6>Rubrique: {{ annonce.rubrique.libelle }}</h6>
                     <p class="card-text">{{ annonce.corps }}</p>
-                    <p class="card-text"><small class="text-muted">Mise en ligne le {{ annonce.createdAt|date('d/m/Y') }},
+                    <p class="card-text"><small class="text-muted">Mise en ligne
+                            le {{ annonce.createdAt|date('d/m/Y') }},
                             visité {{ annonce.visites }} fois</small></p>
                 </div>
             </div>
@@ -55,7 +55,8 @@
 
         <div class="col-md-10">
 
-            <a href="{{ path('rubrique') }}" class="btn btn-secondary"><i class="fas fa-clipboard-list"></i> Retour à la liste</a>
+            <a href="{{ path('rubrique') }}" class="btn btn-secondary"><i class="fas fa-clipboard-list"></i> Retour à la
+                liste</a>
 
 
         </div>

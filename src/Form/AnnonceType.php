@@ -17,14 +17,11 @@ class AnnonceType extends AbstractType
         $builder
             ->add('entete')
             ->add('corps')
-//            ->add('createdAt')
-//            ->add('expiredAt')
             ->add(
                 'rubrique', EntityType::class, [
                 'class'        => Rubrique::class,
                 'choice_label' => 'libelle'
             ])
-//            ->add('user')
             ->add(
                 'images', CollectionType::class, [
                 'entry_type'   => ImageType::class,

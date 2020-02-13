@@ -7,16 +7,15 @@
         <div class="col-10">
             <div class="card bg-light shadow">
                 <div class="card-header">
-
                     <h1>Création nouvelle annonce</h1>
                 </div>
                 <div class="card-body">
-                {{ include('annonce/_form.html.twig') }}
+                    {{ include('annonce/_form.html.twig') }}
                 </div>
-
             </div>
 
-            <a href="{{ path('annonce_index') }}" class="btn btn-secondary mt-2 shadow"><i class="fas fa-clipboard-list"></i>
+            <a href="{{ path('annonce_index') }}" class="btn btn-secondary mt-2 shadow"><i
+                        class="fas fa-clipboard-list"></i>
                 Retour à la liste</a>
         </div>
     </div>

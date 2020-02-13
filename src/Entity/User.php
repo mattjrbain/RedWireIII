@@ -63,21 +63,34 @@ class User implements UserInterface
      */
     private $token;
 
+    /**
+     * User constructor.
+     */
     public function __construct()
     {
         $this->annonces = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
+    /**
+     * @param string $email
+     * @return $this
+     */
     public function setEmail(string $email): self
     {
         $this->email = $email;
@@ -107,6 +120,10 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
+    /**
+     * @param array $roles
+     * @return $this
+     */
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
@@ -122,6 +139,10 @@ class User implements UserInterface
         return (string) $this->password;
     }
 
+    /**
+     * @param string $password
+     * @return $this
+     */
     public function setPassword(string $password): self
     {
         $this->password = $password;
@@ -146,11 +167,18 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
+    /**
+     * @return string|null
+     */
     public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
+    /**
+     * @param string $firstName
+     * @return $this
+     */
     public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
@@ -158,11 +186,18 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
+    /**
+     * @param string $lastName
+     * @return $this
+     */
     public function setLastName(string $lastName): self
     {
         $this->lastName = $lastName;
@@ -178,6 +213,10 @@ class User implements UserInterface
         return $this->annonces;
     }
 
+    /**
+     * @param Annonce $annonce
+     * @return $this
+     */
     public function addAnnonce(Annonce $annonce): self
     {
         if (!$this->annonces->contains($annonce)) {
@@ -188,6 +227,10 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @param Annonce $annonce
+     * @return $this
+     */
     public function removeAnnonce(Annonce $annonce): self
     {
         if ($this->annonces->contains($annonce)) {
@@ -201,16 +244,26 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function __toString()
     {
         return $this->firstName;
     }
 
+    /**
+     * @return string|null
+     */
     public function getToken(): ?string
     {
         return $this->token;
     }
 
+    /**
+     * @param string|null $token
+     * @return $this
+     */
     public function setToken(?string $token): self
     {
         $this->token = $token;
