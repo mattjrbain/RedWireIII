@@ -50,7 +50,7 @@ Dans notre SecurityController ajout de :
  
             $url = $this->generateUrl('app_reset_password', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
  
-            $message = (new \Swift_Message('Oubli de mot de passe - Réinisialisation'))
+            $message = (new \Swift_Message('Oubli de mot de passe - Réinitialisation'))
                 ->setFrom('send@example.com')
                 ->setTo($user->getEmail())
                 ->setBody(
@@ -73,7 +73,7 @@ Dans notre SecurityController ajout de :
         return $this->render('security/forgottenPassword.html.twig');
     }
     
-    /** Réinisialiation du mot de passe par mail
+    /** Réinitialiation du mot de passe par mail
      * @Route("/reinitialiser-mot-de-passe/{token}", name="app_reset_password")
      */
     public function resetPassword(Request $request, string $token, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, RedWireAuthenticator $authenticator)
@@ -146,17 +146,17 @@ resetPasswordMail.html.twig :
 <html>
     <head>
         <meta charset="UTF-8">
-            <title>Réinisialisation Mot de passe</title>
+            <title>Réinitialisation Mot de passe</title>
         </head>
         <body>
             <div>
-                <h2 style="color:#253f58; font-size: 25px;">Redwire Réinisialisation du mot de passe</h2>
+                <h2 style="color:#253f58; font-size: 25px;">Redwire Réinitialisation du mot de passe</h2>
                 <p style="font-size: 15px;">
                     <strong style="color: #d92139; font-size: 15px;">
                         {{user.userName}}</strong>
-                    tu as oublié ton mot de passe, tu vas pouvoir le réinisialiser en suivant ce lien :</p>
+                    tu as oublié ton mot de passe, tu vas pouvoir le réinitialiser en suivant ce lien :</p>
                 <p style="font-size: 15px;">
-                    <a href="{{ url }}">Réinisialisation du mot de passe</a>
+                    <a href="{{ url }}">Réinitialisation du mot de passe</a>
                 </p>
                 <p style="font-size: 15px;">Redwire Team.
                     <br/>
@@ -170,13 +170,13 @@ resetPassword.html.twig :
 ``` twig 
     {% extends 'base.html.twig' %}
  
-{% block title %}Réinisialisation du mot de passe{% endblock %}
+{% block title %}Réinitialisation du mot de passe{% endblock %}
  
 {% block body %}
 <div class="container bubble">
     <form method="post">
  
-        <h2 class="bubble-title">Réinisialisation du mot de passe</h2>
+        <h2 class="bubble-title">Réinitialisation du mot de passe</h2>
         <label for="inputPassword" class="">Nouveau mot de passe*</label>
         <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
         <input type="hidden" name="token" value="{token}">

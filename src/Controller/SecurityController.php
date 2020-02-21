@@ -70,7 +70,7 @@ class SecurityController extends AbstractController
  
             $url = $this->generateUrl('app_reset_password', array('token' => $token), UrlGeneratorInterface::ABSOLUTE_URL);
  
-            $message = (new \Swift_Message('Oubli de mot de passe - Réinisialisation'))
+            $message = (new \Swift_Message('Oubli de mot de passe - Réinitialisation'))
                 ->setFrom('send@example.com')
                 ->setTo($user->getEmail())
                 ->setBody(
@@ -93,7 +93,7 @@ class SecurityController extends AbstractController
         return $this->render('security/forgottenPassword.html.twig');
     }
     
-    /** Réinisialiation du mot de passe par mail
+    /** Réinitialiation du mot de passe par mail
      * @Route("/reinitialiser-mot-de-passe/{token}", name="app_reset_password")
      */
     public function resetPassword(Request $request, string $token, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, RedWireAuthenticator $authenticator)

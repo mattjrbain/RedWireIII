@@ -55,13 +55,13 @@
 </nav>
 <div class="container">
 
-    {% for label, messages in app.flashes %}
-        {% for message in messages %}
-            <div class="alert alert-{{ label }}">
-                <strong>{{ message }}</strong>
-            </div>
-        {% endfor %}
-    {% endfor %}
+{#    {% for label, messages in app.flashes %}#}
+{#        {% for message in messages %}#}
+{#            <div class="alert alert-{{ label }}">#}
+{#                <strong>{{ message }}</strong>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    {% endfor %}#}
 
 
     {% block body %}{% endblock %}
