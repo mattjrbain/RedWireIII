@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!
+{% block title %}Connexion
 {% endblock %}
 
 {% block body %}
@@ -18,7 +18,7 @@
 
                         {% for label, messages in app.flashes %}
                             {% for message in messages %}
-                                <div class="alert alert-{{ label }}">
+                                <div class="alert alert-{{ label }} mt-2">
                                     <strong>{{ message }}</strong>
                                 </div>
                             {% endfor %}

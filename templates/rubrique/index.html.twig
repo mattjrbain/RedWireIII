@@ -4,19 +4,17 @@
 
 {% block body %}
 
-    <h2 class="text-muted mt-4">les rubriques</h2><br>
+{#    <h2 class="text-muted mt-4">les rubriques</h2><br>#}
 
-    <div class="row">
+    <div class="row mt-3">
         {% for rubrique in rubriques %}
 
             <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
+                <div class="card text-center shadow h-100">
                     <div class="card-body">
-                        <h5>Rubrique :</h5>
-                        <div class="title">{{ rubrique.libelle }}</div>
+                        <h5>{{ rubrique.libelle }}</h5>
                         <br>
-                        <a href=" {{ path('annonce_show_unsigned', {'id' : rubrique.id }) }} " class="btn btn-primary">voir
-                            la rubrique</a>
+                        <a href=" {{ path('annonce_show_unsigned', {'id' : rubrique.id }) }} " class="btn btn-primary">Consulter</a>
                     </div>
                 </div>
             </div>
