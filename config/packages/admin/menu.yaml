@@ -1,12 +1,13 @@
 easy_admin:
   design:
     menu:
+      - { label: 'Retour accueil', route: 'rubrique', icon: 'home'}
       # - { entity: 'User', role: ROLE_ADMIN }
       - label: 'Gestion'
         icon: 'newspaper-o'
         children:
-          - { entity: 'Rubrique', icon: "newspaper-o"}
-          - { entity: 'User', icon: "newspaper-o"}
+          - { entity: 'Rubrique', icon: "layer-group"}
+          - { entity: 'User', icon: "user", label: 'Utilisateur'}
           - { entity: 'Annonce', icon: "newspaper-o"}
 
         # name_property_path: 'First name'

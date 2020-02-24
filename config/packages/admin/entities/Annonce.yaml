@@ -13,9 +13,9 @@ easy_admin:
                 
                         fields : 
                                 
-                                - { property : 'entete' }
-                                - { property : 'corps' }
-                                - { property : 'expiredAt' }
+                                - { property : 'entete' , label: 'Titre'}
+                                - { property : 'corps' , label: 'Texte' }
+                                - { property : 'expiredAt' , label: 'Date expiration' }
 
                 form :
                         fields : 

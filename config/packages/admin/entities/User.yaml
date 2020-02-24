@@ -5,11 +5,15 @@ easy_admin:
               # role_prefix: ROLE_ADMIN   
               list:
                 title: 'Utilisateurs'
-                actions: ['-new']
+#                actions: ['-new']
                 fields : 
-                      - { property : 'Email', label: 'mail'}
-                      - { property : 'First name', label: 'prenom'}
-                      - { property : 'Last name', label: 'nom'}
+                      - { property : 'Email', label: 'Mail'}
+                      - { property : 'First name', label: 'Prénom'}
+                      - { property : 'Last name', label: 'Nom'}
+                actions:
+                  - '-new'
+                  - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-secondary' }
+                  - { name: 'delete', icon: 'trash', label: false, css_class: 'btn btn-danger' }
 
                 
                             

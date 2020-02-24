@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Annonce index{% endblock %}
+{% block title %}Vos annonces{% endblock %}
 
 {% block body %}
     <h1>Vos Annonces publiées</h1>
@@ -9,6 +9,7 @@
         <thead>
         <tr>
             <th>Titre</th>
+            <th>Rubrique</th>
             <th>Publiée le...</th>
             <th>Expire le...</th>
             <th>Actions</th>
@@ -18,6 +19,7 @@
         {% for annonce in app.user.annonces %}
             <tr>
                 <td>{{ annonce.entete }}</td>
+                <td>{{ annonce.rubrique.libelle }}</td>
                 <td>{{ annonce.createdAt ? annonce.createdAt|date('d/m/Y à H:i:s') : '' }}</td>
                 <td>{{ annonce.expiredAt ? annonce.expiredAt|date('d/m/Y à H:i:s') : '' }}</td>
                 <td>
